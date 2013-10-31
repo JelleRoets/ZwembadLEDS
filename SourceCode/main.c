@@ -2,22 +2,21 @@
 #include "Initialisations.h"
 
 // main
+
 int main(int argc, char** argv) {
-    int i;
 
     init();         // configure the microcontroller
     LEDgreen=1;
+    LEDupdateOn = 1;    // put 30 Hz Ledupdater on
 
     backlightOn();
     clearLCD();
-    appendStringToLCD("Hello World 2");
-    S1R1 = 1;
+    appendStringToLCD("Welcome to superasem LED world!");
+
+    // Green Board LED blinking
     while(1){
-        LEDgreen=!LEDgreen;
-        LEDorange=!LEDorange;
-        setColor(i++,TRUE);
-        if (i==9) i=0;
-        __delay_ms(250);
+        LEDgreen = !LEDgreen;
+        __delay_ms(500);
     };
     return (EXIT_SUCCESS);
 }

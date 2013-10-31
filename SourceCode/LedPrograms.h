@@ -13,7 +13,7 @@
 
 
 
-
+void LedUpdate(void);
 
 #endif	/* LEDPROGRAMS_H */
 

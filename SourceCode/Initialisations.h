@@ -16,7 +16,7 @@
 #include <stdlib.h>
 
 // *** Constants ***
-#define Mips10          //Processor speed: Mips10 (75 mA), Mips20(138 mA) or Mips30 (200 mA)
+#define Mips20          //Processor speed: Mips10 (75 mA), Mips20(138 mA) or Mips30 (200 mA)
 
 // *** Pin mapping ***
 // Board Leds

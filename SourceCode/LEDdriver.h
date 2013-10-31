@@ -11,14 +11,32 @@
 
 #include "Initialisations.h"
 
+// LED timer interrupts
+#define LEDupdateOn T3CONbits.TON
+#define CI_LEDupdate() IFS0bits.T3IF = 0
+
+#define LEDtimerOn T2CONbits.TON
+#define LEDnextToggle PR2
+#define LEDtimerReg TMR2
+#define CI_LEDtimer() IFS0bits.T2IF = 0
+
+// LED timer constants
+#define EOP 0xFFFF          // end of period
+
+#ifdef Mips30
+    #define LSBticks 74     // Number of timerticks per LSB of colorvalue
+#elif defined(Mips20)
+    #define LSBticks 49     // Number of timerticks per LSB of colorvalue
+#else
+    #define LSBticks 196    // Number of timerticks per LSB of colorvalue
+#endif
+
 // Function prototypes
 void init_LEDdriver(void);
-void setColor(int idx,int slinger);
-// setRGB_S1(byte red, byte green, byte blue);
-//void setRGB_S2(byte red, byte green, byte blue);
-//void setColor_byID(int ID, byte value);
-//void setColor_all(byte values[]);
-
+void updateLEDpins(void);
+void setLEDColors(unsigned char colors[]);
+int compare (const void* p1, const void* p2);
+void setLedPin(int LEDnumber, int state);
 
 #endif	/* LEDDRIVER_H */
 
